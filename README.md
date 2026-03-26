@@ -1,151 +1,159 @@
-# 📡 Arduino-Based NRF Wireless Communication
+# 🌱 Smart Plant Monitoring System using Raspberry Pi
 
 <p align="center">
-  <img src="images/demo.gif" width="450"/>
+  <b>🌿 Monitor Plant Health with IoT & Instant Email Alerts 📧</b><br>
+  <i>Raspberry Pi | Python | IoT</i>
 </p>
 
 <p align="center">
-  <b>📶 Wireless Data Communication using NRF24L01 Modules</b><br>
-  <i>IoT | Embedded Systems | Arduino</i>
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/Arduino-Uno-blue?style=for-the-badge">
-  <img src="https://img.shields.io/badge/NRF24L01-Wireless-green?style=for-the-badge">
-  <img src="https://img.shields.io/badge/Communication-2.4GHz-orange?style=for-the-badge">
+  <img src="https://img.shields.io/badge/RaspberryPi-IoT-red?style=for-the-badge">
+  <img src="https://img.shields.io/badge/Python-3.x-blue?style=for-the-badge">
+  <img src="https://img.shields.io/badge/Alerts-Email-green?style=for-the-badge">
 </p>
 
 ---
 
 ## 🧠 Project Overview
 
-This project demonstrates **wireless communication between two Arduino boards** using **NRF24L01 modules**.
+This project is an **IoT-based Smart Plant Monitoring System** that continuously tracks environmental conditions and sends **instant email alerts** when values go beyond safe limits.
 
-* 📤 Transmitter sends data
-* 📥 Receiver receives data
-* 📡 Communication over 2.4 GHz
+🌡️ Temperature
+💧 Soil Moisture
+🌫️ Humidity
+☀️ Light Intensity
+
+👉 Helps in **efficient plant care and smart agriculture**
 
 ---
 
 ## ✨ Features
 
-✔️ Long-range wireless communication 📡
-✔️ Low power consumption ⚡
-✔️ Real-time data transmission
-✔️ Reliable & scalable system
+✔️ Real-time monitoring 📊
+✔️ Instant email alerts 📧
+✔️ Low-cost IoT solution
+✔️ Easy to expand (AI, Cloud, App)
+✔️ Suitable for home & agriculture
 
 ---
 
-## 🛠️ Components Required
-
-| Component       | Quantity  |
-| --------------- | --------- |
-| Arduino Uno     | 2         |
-| NRF24L01 Module | 2         |
-| Jumper Wires    | As needed |
-| Power Supply    | 3.3V      |
-
----
-
-## 🔌 Pin Configuration (NRF24L01 → Arduino)
-
-| NRF Pin | Arduino |
-| ------- | ------- |
-| VCC     | 3.3V ⚠️ |
-| GND     | GND     |
-| CE      | D9      |
-| CSN     | D10     |
-| SCK     | D13     |
-| MOSI    | D11     |
-| MISO    | D12     |
-
----
-
-## 🏗️ Working Principle
+## 🏗️ System Architecture
 
 ```mermaid
-graph LR;
-    A[Transmitter Arduino] -->|Wireless Data| B[NRF24L01];
-    B --> C[Receiver NRF24L01];
-    C --> D[Receiver Arduino];
+graph TD;
+    A[Sensors] --> B[Raspberry Pi];
+    B --> C[Data Processing];
+    C --> D{Threshold Check};
+    D -->|Exceeded| E[Send Email Alert];
+    D -->|Normal| F[Continue Monitoring];
 ```
+
+---
+
+## 🛠️ Hardware Components
+
+| Component            | Description            |
+| -------------------- | ---------------------- |
+| Raspberry Pi 2       | Main controller        |
+| Soil Moisture Sensor | Detects water level    |
+| DHT22 Sensor         | Temperature & humidity |
+| LDR Sensor           | Light intensity        |
+| Wi-Fi Module         | Internet connectivity  |
+
+---
+
+## 💻 Software Stack
+
+* 🐍 Python
+* 📡 SMTP (Email Alerts)
+* 🔌 RPi.GPIO
+* 🌡️ Adafruit_DHT
+
+---
+
+## ⚙️ Working Principle
+
+1. Sensors collect environmental data
+2. Raspberry Pi processes the data
+3. Values compared with thresholds
+4. 📧 Email alert sent if abnormal
 
 ---
 
 ## 📸 Project Preview
 
-### 🔧 Hardware Setup
-
 <p align="center">
   <img src="images/setup.png" width="400"/>
 </p>
 
-### ⚙️ Circuit Diagram
-
 <p align="center">
-  <img src="images/circuit.png" width="400"/>
+  <img src="images/output.png" width="400"/>
 </p>
 
 ---
 
-## 🧾 Code Structure
+## 📧 Email Alert Example
 
-* 📤 `transmitter/transmitter.ino` → Sends data
-* 📥 `receiver/receiver.ino` → Receives data
+```text
+Subject: ⚠️ Low Soil Moisture Alert
+
+Warning!
+Soil moisture is LOW (250).
+Please water your plant immediately.
+```
 
 ---
 
-## 🚀 How to Run
+## 🚀 Installation & Setup
 
 ```bash
-1. Connect NRF modules to both Arduinos
-2. Upload transmitter code to first Arduino
-3. Upload receiver code to second Arduino
-4. Open Serial Monitor
-5. Observe transmitted data
-```
-
----
-
-## 📊 Output
-
-📤 Transmitter sends:
-
-```
-Hello World
-```
-
-📥 Receiver receives:
-
-```
-Data Received: Hello World
+git clone https://github.com/your-username/smart-plant-monitoring.git
+cd smart-plant-monitoring
+pip install -r requirements.txt
+python main.py
 ```
 
 ---
 
 ## ⚠️ Challenges Faced
 
-* NRF requires stable **3.3V supply** ⚡
-* Connection issues due to loose wiring
-* Signal interference 📡
+* Sensor calibration issues 🎯
+* Moisture sensor corrosion
+* Unstable Wi-Fi connectivity 📡
+* Power management ⚡
+* Email sending limits
 
 ---
 
-## 🔮 Future Scope
+## 📊 Results
 
-🚀 IoT-based wireless sensor network
-🤖 Smart home automation
-📱 Mobile-controlled systems
-🌐 Cloud integration
+✅ Real-time monitoring achieved
+✅ Instant alerts working
+✅ Improved plant health
+✅ Reduced water wastage
 
 ---
 
-## 👨‍💻 Author
+## 🔮 Future Enhancements
 
-**Rakesh M H**
+🚀 Mobile app integration
+🤖 AI-based prediction
+☁️ Cloud storage
+🌍 Weather API integration
+📡 LoRa communication
+
+---
+
 
 ---
 
 ## ⭐ Support
 
-If you like this project → ⭐ Star this repository!
+If you like this project:
+👉 Give it a ⭐ on GitHub
+👉 Share with others
+
+---
+
+<p align="center">
+  🌿 Smart Plants, Smart Future 🌿
+</p>
